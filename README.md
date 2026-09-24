@@ -1,5 +1,9 @@
 # Privacy-preserving financial anomaly detection
 
+[![Research project](https://img.shields.io/badge/type-research%20project-6A1B9A)](https://github.com/Yass149/financial-anomaly-engine)
+![Privacy](https://img.shields.io/badge/focus-differential%20privacy-00695C)
+![Public scope](https://img.shields.io/badge/public%20scope-documentation%20only-546E7A)
+
 A research project studying how Differentially Private SGD changes fraud-detection performance under severe class imbalance.
 
 > **Repository status:** the public repository currently contains this project overview only. The dissertation code, datasets, checkpoints and experiment artefacts are kept separately and are not exposed here.
