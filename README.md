@@ -1,57 +1,37 @@
 # Privacy-preserving financial anomaly detection
 
-An experimental fraud-detection study measuring the cost of Differentially Private SGD under severe class imbalance, using GRU-based transaction models on the Elliptic Bitcoin transaction graph and PaySim synthetic mobile-money data.
+A research project studying how Differentially Private SGD changes fraud-detection performance under severe class imbalance.
 
-> **Project status:** research prototype and dissertation evidence. The dashboards are local artefacts; no financial decisioning service is deployed from this repository.
+> **Repository status:** the public repository currently contains this project overview only. The dissertation code, datasets, checkpoints and experiment artefacts are kept separately and are not exposed here.
 
 ## Research question
 
-What does Differential Privacy actually cost a fraud detector when the minority class is rare? The experiments compare non-private training with DP-SGD, class weighting and minority oversampling, then audit both detection quality and class-stratified membership-inference risk.
+What does privacy cost when a fraud detector must learn from a rare minority class?
 
-The main result is a mechanism, not a marketing claim: standard loss weighting can collapse minority recall under per-sample gradient clipping. Data-level oversampling restores recall, but its reported privacy budget must be corrected for duplicated records. The experiments also show that privacy risk is not evenly distributed across fraud and safe classes.
+The underlying study compares non-private training with DP-SGD, class weighting and minority oversampling on the Elliptic Bitcoin transaction graph and PaySim synthetic mobile-money data. It measures detection quality alongside class-stratified membership-inference risk.
 
-## Evidence
+The central finding is a mechanism to investigate rather than a production claim: standard loss weighting can collapse minority recall under per-sample gradient clipping. Data-level oversampling can restore recall, but duplicated records change how a reported privacy budget should be interpreted.
 
-- Elliptic and PaySim provide structurally different fraud settings.
-- DP-SGD is implemented with Opacus controls and explicit clipping/noise parameters.
-- Membership-inference analysis is stratified by class.
-- Results and dashboard cases trace back to committed JSON artefacts.
-- The project includes tests tying the write-up to the reported outputs.
+## What the completed study covers
 
-## Repository map
+- Differentially Private SGD with explicit noise and clipping controls.
+- Severe class imbalance and minority-class recall.
+- Elliptic and PaySim generalisation experiments.
+- Class-stratified membership-inference auditing.
+- Reproducible metrics and dissertation evidence in the private research workspace.
 
-```text
-dashboard/       dependency-free viva/results console
-src/             importable model and prediction code
-hpc/             RACC2/SLURM training and audit bundle
-results/         metrics, attacks, checkpoints and demo cases
-tests/           regression and consistency checks
-paths.py         artefact-location contract
-app.py           legacy Streamlit dashboard
-```
+## Why the code is not included here
 
-The dashboard reads precomputed outputs; it does not train or perform live inference. This keeps a demo reproducible and CPU-accessible while making the distinction between experiment evidence and deployment explicit.
-
-## Run the results console
-
-```bash
-git clone https://github.com/Yass149/financial-anomaly-engine.git
-cd financial-anomaly-engine
-pip install -r requirements-dashboard.txt
-# open dashboard/index.html directly, or:
-streamlit run app.py
-```
-
-For the headline training and audit commands, see the scripts under `hpc/`. They require the datasets, a GPU environment and (for the cluster workflow) RAPIDS/cuDF, PyTorch and Opacus. The datasets and dissertation are not redistributed here.
+The public repository deliberately does not redistribute the dissertation, source datasets or private experiment bundle. The datasets have their own access and licensing terms, and financial modelling artefacts need careful review before publication. This README describes the work without implying that a visitor can run the private experiments from this repository.
 
 ## Production gap
 
-A deployable financial system would additionally need a feature-store contract, online/offline parity tests, model and threshold governance, explainability review, secure data handling, access control, drift and fairness monitoring, human review workflows and a rollback path. This repository is evidence for the research question, not authorisation to automate financial decisions.
+This is not a deployed financial decisioning system. A real service would additionally require versioned data contracts, online/offline feature parity, model and threshold governance, privacy review, access control, drift and fairness monitoring, human review, audit trails and rollback procedures.
 
-## Reproducibility
+## Project context
 
-The dashboard and experiments are designed around explicit artefact paths, committed metrics and checkpoints, and consistency checks. Re-run the tests and `scripts/check_consistency.py` before updating headline values.
+MSc Data Science and Advanced Computing dissertation project, University of Reading.
 
-## Context
+Candidate: Yassine Malal
 
-MSc Data Science and Advanced Computing dissertation project, University of Reading. Candidate: Yassine Malal.
+The public repository is intentionally documentation-only at this stage. The next release should add a reviewed, runnable minimal example or a clearly linked companion repository if the underlying artefacts can be shared safely.
