@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/readme-banner.svg" alt="Privacy shield with connected data points and an anomaly signal" width="100%" />
+  <img src="assets/readme-banner.svg" alt="Diagram of the dissertation datasets, training comparisons and fraud/privacy evaluation" width="100%" />
 </div>
 
 # Privacy-preserving financial anomaly detection
