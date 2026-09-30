@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/readme-banner.svg" alt="Privacy shield with connected data points and an anomaly signal" width="100%" />
+</div>
+
 # Privacy-preserving financial anomaly detection
 
 [![Research project](https://img.shields.io/badge/type-research%20project-6A1B9A)](https://github.com/Yass149/financial-anomaly-engine)
